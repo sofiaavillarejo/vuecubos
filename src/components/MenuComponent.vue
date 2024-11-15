@@ -15,19 +15,20 @@
             <li class="nav-item">
               <router-link class="nav-link active" to="/login">Iniciar Sesión</router-link>
             </li>
-            <li class="nav-item">
-              <router-link class="nav-link active" to="/perfil">Perfil</router-link>
-            </li>
-            <!-- <li class="nav-item">
-              <router-link class="nav-link" to="/coches">Coches</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link class="nav-link" to="/empleados">Empleados detalle</router-link>
-            </li> -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Marcas</a>
               <ul class="dropdown-menu" >
                 <li v-for="marca in marcas" :key="marca" class="bg-dark"><router-link class="nav-link" :to="'/cubosmarca/' + marca">{{marca}}</router-link></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
+              <ul class="dropdown-menu" >
+                <li class="bg-dark">
+                  <router-link class="nav-link active" to="/perfil">Perfil</router-link>
+                  <router-link class="nav-link active" to="/compras">Compras</router-link>
+                  <router-link class="nav-link active" to="/comprar">Realizar Pedido</router-link>
+                </li>
               </ul>
             </li>
           </ul>
@@ -45,7 +46,7 @@ export default {
   name: "MenuComponent",
   data() {
     return {
-      marcas: []
+      marcas: [],
     }
   },
   mounted(){
