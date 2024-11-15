@@ -17,7 +17,7 @@
             </tr>
           </tbody>
         </table>
-        <router-link class="btn btn-primary w-100 mt-4" to="/compras">MostrarCompras</router-link>
+        <router-link class="btn btn-primary w-100 mt-4" to="/compras">Mostrar Compras</router-link>
 
     </div>
   </div>

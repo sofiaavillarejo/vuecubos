@@ -21,7 +21,7 @@
                 <li v-for="marca in marcas" :key="marca" class="bg-dark"><router-link class="nav-link" :to="'/cubosmarca/' + marca">{{marca}}</router-link></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" v-if="sesion">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Usuario</a>
               <ul class="dropdown-menu" >
                 <li class="bg-dark">
@@ -31,6 +31,9 @@
                 </li>
               </ul>
             </li>
+            <button class="btn btn-danger" @click="cerrarSesion()" v-if="sesion">
+              Cerrar sesion
+            </button>
           </ul>
         </div>
       </div>
@@ -47,12 +50,28 @@ export default {
   data() {
     return {
       marcas: [],
+      sesion: localStorage.getItem("token")
     }
   },
   mounted(){
+
     service.getMarcas().then(result => {
       this.marcas = result.data
     })
+  },
+  methods: {
+    cerrarSesion() {
+      alert("Has cerrado la sesión");
+      localStorage.removeItem("token");
+      this.$router.push("/");
+    },
+  },
+  updated() {
+    if (localStorage.getItem("token") == null) {
+      this.sesion = false;
+    } else {
+      this.sesion = true;
+    }
   }
 }
 </script>
